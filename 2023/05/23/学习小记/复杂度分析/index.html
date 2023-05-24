@@ -24,13 +24,15 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
+  <meta name="keywords" content="学习心得" />
+
 
 <link rel="canonical" href="http://红叶.top/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/">
 
 
 
   <title>
- |
+复杂度分析 - 学习小记 |
 Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,7 +60,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
+  <h1 itemprop="name headline">复杂度分析
   </h1>
   
 <div class="meta">
@@ -100,12 +102,12 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,7 +132,9 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">首页</a></span>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" itemprop="item" rel="index" title="分类于 学习小记"><span itemprop="name">学习小记</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
@@ -156,6 +160,9 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <p>常见时间复杂度：O(1) &lt; O(logn) &lt; O(n) &lt; O(nlogn) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) &lt; O(n!) &lt; O(n^n)<br>1、O(1):<br>O(1)只是常量级时间复杂度的一种表示方法，并不是指只执行了一行代码。只要代码的执行时间不随着n的增大而增长，这样代码的时间复杂度我们都记作O(1)。一般情况下，只要算法中不存在循环语句、递归语句，即使有成千上万行代码，其时间复杂度也是O(1)。<br>2、O(logn)、O(nlogn)：<br>例：	int i&#x3D;1;<br>    while(i&lt;&#x3D;n){i&#x3D;i<em>2;}<br>从代码中可以看出，变量的值从1开始取，每循环一次就可以乘以2。当大于n时，循环结束。所以2x&#x3D;n，所以x&#x3D;log2n，这段代码的时间复杂度就是O(log2n)。实际上，不管是以2为底，还是以3为底，我们可以把所有对数阶的时间复杂度都记为O(logn)。<br>而O(nlogn)就是在循环内嵌套了一个时间复杂度为O(logn)的代码。O(nlogn)是一种非常常见的算法时间复杂度。比如，归并排序、快速排序的时间复杂度都是O(nlogn)<br>3、O(m+n)、O(m</em>n)：<br>例：	for(int i&#x3D;0;i&lt;m;i++){<br>    System.out.println(“m”);}<br>    for(int j&#x3D;0;j&lt;n;j++){<br>    System.out.println(“n”);}<br>从代码中可以看出，m和n是表示两个数据规模。我们无法事先评估m和n谁的量级大，所以我们在表示复杂度的时候，就不能简单的利用加法法则，省略掉其中一个。所以上面的代码的复杂度是O(m+n)。<br>这样我们的加法法则就不正确了，需要将加法规则改为：T(n)&#x3D;T1(m)+T2(n)&#x3D;O(m)+O(n)&#x3D;O(m+n)，但是乘法法则继续有效：T(n)&#x3D;T1(m) x T2(n)&#x3D;O(m) x O(n)&#x3D;O(m*n)</p>
 <p>平均时间复杂度：（算法完成工作平均需要多少基本操作）<br>​ 指的是概率论中的加权平均值，也叫作期望值，所以平均时间复杂度的全称应该叫加权平均时间复杂度或者期望时间复杂度<br>公式：A(n)&#x3D;I∈S∑​PitIi<br>其中A(n)表示平均时间复杂度，S是规模为n的实例集，实例i的概率为 Pi,算法对实例i执行的基本运算次数是ti。</p>
 
+      <div class="tags">
+          <a href="/tags/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" rel="tag"><i class="ic i-tag"></i> 学习心得</a>
+      </div>
   </div>
 
    <footer>
@@ -166,7 +173,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-03-23 17:08:13" itemprop="dateModified" datetime="2023-03-23T17:08:13+08:00">2023-03-23</time>
+    <time title="修改时间：2023-05-24 13:35:59" itemprop="dateModified" datetime="2023-05-24T13:35:59+08:00">2023-05-24</time>
   </span>
 </div>
 
@@ -202,7 +209,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://红叶.top/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" title="">http://红叶.top/2023/05/23/学习小记/复杂度分析/</a>
+    <a href="http://红叶.top/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" title="复杂度分析">http://红叶.top/2023/05/23/学习小记/复杂度分析/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -221,20 +228,20 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
     <div class="item left">
       
 
-  <a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E6%8E%92%E5%BA%8F/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeun65urj20zk0m81ii.jpg" title="未命名">
+  <a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E6%8E%92%E5%BA%8F/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclize41wj20zk0m87gk.jpg" title="排序">
   <span class="type">上一篇</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>未命名</h3>
+  <span class="category"><i class="ic i-flag"></i> 学习小记</span>
+  <h3>排序</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8D%A1%E5%B8%B8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexoj0moj20zk0m8kgu.jpg" title="未命名">
+  <a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8D%A1%E5%B8%B8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitf0kl1j20zk0m87fe.jpg" title="卡常小知识">
   <span class="type">下一篇</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>未命名</h3>
+  <span class="category"><i class="ic i-flag"></i> 学习小记</span>
+  <h3>卡常小知识</h3>
   </a>
 
     </div>
@@ -255,6 +262,9 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
       <div class="contents panel pjax" data-title="文章目录">
       </div>
       <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/ACM%E3%80%81OI%E3%80%81IOI%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D/" rel="bookmark" title="ACM、OI、IOI 编程竞赛模式介绍">ACM、OI、IOI 编程竞赛模式介绍</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/DFS%E5%92%8CBFS/" rel="bookmark" title="BFS和DFS">BFS和DFS</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/P-NP%E9%97%AE%E9%A2%98/" rel="bookmark" title="P-NP 问题">P-NP 问题</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="bookmark" title="动态规划">动态规划</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8D%A1%E5%B8%B8/" rel="bookmark" title="卡常小知识">卡常小知识</a></li><li class="active"><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" rel="bookmark" title="复杂度分析">复杂度分析</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E6%8E%92%E5%BA%8F/" rel="bookmark" title="排序">排序</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E7%AE%97%E6%B3%95%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/" rel="bookmark" title="算法板子">算法板子</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" rel="bookmark" title="进制转换">进制转换</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E5%BF%83%E5%BE%97/" rel="bookmark" title="自增自减">自增自减</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%AE%8F%E5%AE%9A%E4%B9%89/" rel="bookmark" title="宏定义">宏定义</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -267,8 +277,20 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">15</span>
+        <span class="count">20</span>
         <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">2</span>
+        <span class="name">标签</span>
       </a>
     </div>
 </nav>
@@ -354,9 +376,20 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
 </div>
 
-    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Linux%20%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8/" title="未命名">未命名</a></span>
+    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">动态规划</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="分类于 语言学习">语言学习</a>
+</div>
+
+    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Linux%20%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8/" title="Linux 命令速查表">Linux 命令速查表</a></span>
   </li>
 
       
@@ -365,79 +398,77 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/05/17/TCP%20IP%20%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/" title="TCP IP 网络模型">TCP IP 网络模型</a></span>
+    <span><a href="/2023/04/26/%E6%9E%AB%E5%8F%B6%E5%AE%9B/" title="欢迎来到我的个人网站！">欢迎来到我的个人网站！</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="分类于 语言学习">语言学习</a>
 </div>
 
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="未命名">未命名</a></span>
+    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/C%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="C 备忘清单">C 备忘清单</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
 </div>
 
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/P-NP%E9%97%AE%E9%A2%98/" title="未命名">未命名</a></span>
+    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" title="进制转换">进制转换</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
 </div>
 
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E5%BF%83%E5%BE%97/" title="未命名">未命名</a></span>
+    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8D%A1%E5%B8%B8/" title="卡常小知识">卡常小知识</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
 </div>
 
-    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Git%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="未命名">未命名</a></span>
+    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%AE%8F%E5%AE%9A%E4%B9%89/" title="宏定义">宏定义</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="分类于 语言学习">语言学习</a>
 </div>
 
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8D%A1%E5%B8%B8/" title="未命名">未命名</a></span>
+    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Python%203%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="Python 备忘清单">Python 备忘清单</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="分类于 语言学习">语言学习</a>
 </div>
 
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E6%8E%92%E5%BA%8F/" title="未命名">未命名</a></span>
+    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/C++%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="C++ 备忘清单">C++ 备忘清单</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
 </div>
 
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%AE%8F%E5%AE%9A%E4%B9%89/" title="未命名">未命名</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E7%AE%97%E6%B3%95%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/" title="未命名">未命名</a></span>
+    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/P-NP%E9%97%AE%E9%A2%98/" title="P-NP 问题">P-NP 问题</a></span>
   </li>
 
   </ul>
