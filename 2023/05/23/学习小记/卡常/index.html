@@ -102,12 +102,12 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://t.mwm.moe/ycy?254317"></li>
-          <li class="item" data-background-image="https://t.mwm.moe/ycy?669183"></li>
-          <li class="item" data-background-image="https://t.mwm.moe/ycy?599240"></li>
-          <li class="item" data-background-image="https://t.mwm.moe/ycy?675069"></li>
-          <li class="item" data-background-image="https://t.mwm.moe/ycy?245074"></li>
-          <li class="item" data-background-image="https://t.mwm.moe/ycy?508627"></li>
+          <li class="item" data-background-image="https://t.mwm.moe/ycy?327216"></li>
+          <li class="item" data-background-image="https://t.mwm.moe/ycy?16596"></li>
+          <li class="item" data-background-image="https://t.mwm.moe/ycy?449038"></li>
+          <li class="item" data-background-image="https://t.mwm.moe/ycy?395991"></li>
+          <li class="item" data-background-image="https://t.mwm.moe/ycy?256332"></li>
+          <li class="item" data-background-image="https://t.mwm.moe/ycy?6723"></li>
         </ul>
       </div>
     </header>
@@ -160,9 +160,11 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <p>1.快读 &amp; 快写<br>总所周知，字符输入输出比标准输入输出快的很。</p>
 <p>快读和快写就是运用了这个原理。</p>
 <p>快写模板（循环）：</p>
-<p>template <typename T><br>void read(T &amp;x) {<br>    x &#x3D; 0;<br>    int f &#x3D; 1;<br>    char ch &#x3D; getchar();<br>    while(!isdigit(ch)) {  &#x2F;&#x2F;isdigit在<cctype>中<br>        if (ch &#x3D;&#x3D; ‘-‘) {<br>            f &#x3D; -1;<br>        }<br>        ch &#x3D; getchar();<br>    }<br>    while(isdigit(ch)) {<br>        x &#x3D; x * 10 + (ch - 48);<br>        ch &#x3D; getchar();<br>    }<br>    x *&#x3D; f;<br>    return;<br>}<br>用法：	read(x); &#x2F;&#x2F;输入并赋值</p>
+<p>template <typename T><br>void read(T &amp;x) {<br>    x &#x3D; 0;<br>    int f &#x3D; 1;<br>    char ch &#x3D; getchar();<br>    while(!isdigit(ch)) {  &#x2F;&#x2F;isdigit在<cctype>中<br>        if (ch &#x3D;&#x3D; ‘-‘) {<br>            f &#x3D; -1;<br>        }<br>        ch &#x3D; getchar();<br>    }<br>    while(isdigit(ch)) {<br>        x &#x3D; x * 10 + (ch - 48);<br>        ch &#x3D; getchar();<br>    }<br>    x *&#x3D; f;<br>    return;<br>}</p>
+<p>用法：	read(x); &#x2F;&#x2F;输入并赋值</p>
 <p>快写（递归）：</p>
-<p>template <typename T><br>void write(T x) {<br>    if(x &lt; 0) {<br>        putchar(‘-‘);<br>        x &#x3D; -x;<br>    }<br>    if(x &gt; 9) {<br>        write(x &#x2F; 10);<br>    }<br>    putchar(x % 10 + ‘0’);<br>    return;<br>}<br>用法：	write(x); &#x2F;&#x2F;输出</p>
+<p>template <typename T><br>void write(T x) {<br>    if(x &lt; 0) {<br>        putchar(‘-‘);<br>        x &#x3D; -x;<br>    }<br>    if(x &gt; 9) {<br>        write(x &#x2F; 10);<br>    }<br>    putchar(x % 10 + ‘0’);<br>    return;<br>}    </p>
+<p>用法：	write(x); &#x2F;&#x2F;输出</p>
 <p>2.位运算</p>
 <p>能用位运算就用。</p>
 <p>在乘除运算上，最好用左移和右移代替。</p>
@@ -174,11 +176,13 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <p>快速幂模板：</p>
 <p>int qk_pow(int x, int n){<br>    if(n &#x3D;&#x3D; 0) {<br>        return 1;<br>    }<br>    int t &#x3D; 1;<br>    while(n) {<br>      if(n &amp; 1) { &#x2F;&#x2F;用&amp;代替%<br>          t <em>&#x3D; x;<br>      }<br>      n &gt;&gt;&#x3D; 1; &#x2F;&#x2F;用&gt;&gt;代替</em><br>      x *&#x3D; x;<br>    }<br>    return t;<br>}</p>
 <p>3）Swap函数</p>
-<p>void Swap(int &amp;a, int &amp;b) {<br>    a ^&#x3D; b ^&#x3D; a ^&#x3D; b;<br>    return;<br>}<br>这个代码很妙，可以细细品味。</p>
+<p>void Swap(int &amp;a, int &amp;b) {<br>    a ^&#x3D; b ^&#x3D; a ^&#x3D; b;<br>    return;<br>}</p>
+<p>这个代码很妙，可以细细品味。</p>
 <p>3.inline</p>
 <p>在声明函数之前写上 inline ，可以加快一下函数调用，但只能用于一些操作简单、调用频繁的函数。涉及递归，大号的循环等很复杂的函数，编译器会自动忽略 inline 。</p>
 <p>如快读函数可写成：</p>
-<p>template <typename T><br>inline void read(T &amp;x) {<br>    x &#x3D; 0;<br>    int f &#x3D; 1;<br>    char ch &#x3D; getchar();<br>    while(!isdigit(ch)) {<br>        if (ch &#x3D;&#x3D; ‘-‘) {<br>            f &#x3D; -1;<br>        }<br>        ch &#x3D; getchar();<br>    }<br>    while(isdigit(ch)) {<br>        x &#x3D; x * 10 + (ch - 48);<br>        ch &#x3D; getchar();<br>    }<br>    x *&#x3D; f;<br>    return;<br>}<br>但有时 inline 会被忽略。</p>
+<p>template <typename T><br>inline void read(T &amp;x) {<br>    x &#x3D; 0;<br>    int f &#x3D; 1;<br>    char ch &#x3D; getchar();<br>    while(!isdigit(ch)) {<br>        if (ch &#x3D;&#x3D; ‘-‘) {<br>            f &#x3D; -1;<br>        }<br>        ch &#x3D; getchar();<br>    }<br>    while(isdigit(ch)) {<br>        x &#x3D; x * 10 + (ch - 48);<br>        ch &#x3D; getchar();<br>    }<br>    x *&#x3D; f;<br>    return;<br>}</p>
+<p>但有时 inline 会被忽略。</p>
 <p>4.寄存器<br>假如你要拿个钥匙，一个在你裤兜里，一个在你车上，你拿哪一个？</p>
 <p>就近原则。</p>
 <p>从距离上来说，内存条相较于寄存器来说离 C P U \tt CPU CPU 更远。</p>
@@ -219,7 +223,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-05-24 13:36:58" itemprop="dateModified" datetime="2023-05-24T13:36:58+08:00">2023-05-24</time>
+    <time title="修改时间：2023-05-26 13:26:01" itemprop="dateModified" datetime="2023-05-26T13:26:01+08:00">2023-05-26</time>
   </span>
 </div>
 
@@ -274,7 +278,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
     <div class="item left">
       
 
-  <a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;t.mwm.moe&#x2F;ycy?709602" title="复杂度分析">
+  <a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;t.mwm.moe&#x2F;ycy?24393" title="复杂度分析">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> 学习小记</span>
   <h3>复杂度分析</h3>
@@ -284,7 +288,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
     <div class="item right">
       
 
-  <a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Git%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;t.mwm.moe&#x2F;ycy?540571" title="Git 备忘清单">
+  <a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Git%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;t.mwm.moe&#x2F;ycy?751219" title="Git 备忘清单">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> 语言学习</span>
   <h3>Git 备忘清单</h3>
@@ -309,7 +313,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/ACM%E3%80%81OI%E3%80%81IOI%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D/" rel="bookmark" title="ACM、OI、IOI 编程竞赛模式介绍">ACM、OI、IOI 编程竞赛模式介绍</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/DFS%E5%92%8CBFS/" rel="bookmark" title="BFS和DFS">BFS和DFS</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/P-NP%E9%97%AE%E9%A2%98/" rel="bookmark" title="P-NP 问题">P-NP 问题</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="bookmark" title="动态规划">动态规划</a></li><li class="active"><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8D%A1%E5%B8%B8/" rel="bookmark" title="卡常小知识">卡常小知识</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" rel="bookmark" title="复杂度分析">复杂度分析</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E6%8E%92%E5%BA%8F/" rel="bookmark" title="排序">排序</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E7%AE%97%E6%B3%95%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/" rel="bookmark" title="算法板子">算法板子</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" rel="bookmark" title="进制转换">进制转换</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E5%BF%83%E5%BE%97/" rel="bookmark" title="自增自减">自增自减</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%AE%8F%E5%AE%9A%E4%B9%89/" rel="bookmark" title="宏定义">宏定义</a></li>
+          <li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/ACM%E3%80%81OI%E3%80%81IOI%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D/" rel="bookmark" title="编程竞赛模式介绍">编程竞赛模式介绍</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/DFS%E5%92%8CBFS/" rel="bookmark" title="BFS、DFS">BFS、DFS</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/P-NP%E9%97%AE%E9%A2%98/" rel="bookmark" title="P-NP">P-NP</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="bookmark" title="动态规划">动态规划</a></li><li class="active"><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8D%A1%E5%B8%B8/" rel="bookmark" title="卡常小知识">卡常小知识</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" rel="bookmark" title="复杂度分析">复杂度分析</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E6%8E%92%E5%BA%8F/" rel="bookmark" title="排序">排序</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E7%AE%97%E6%B3%95%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/" rel="bookmark" title="算法板子">算法板子</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" rel="bookmark" title="进制转换">进制转换</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E5%BF%83%E5%BE%97/" rel="bookmark" title="自增自减">自增自减</a></li><li><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%AE%8F%E5%AE%9A%E4%B9%89/" rel="bookmark" title="宏定义">宏定义</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -323,19 +327,19 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">20</span>
+        <span class="count">24</span>
         <span class="name">文章</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">2</span>
+        <span class="count">4</span>
         <span class="name">分类</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">2</span>
+        <span class="count">4</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -346,6 +350,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
       <span class="exturl item bilibili" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tLw==" title="https:&#x2F;&#x2F;www.bilibili.com&#x2F;"><i class="ic i-bilibili"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
       <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9jaS16aGFuZy1oYW8teWktemh1LXhpYW8tNDI=" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ci-zhang-hao-yi-zhu-xiao-42"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item about" data-url="aHR0cDovLzI1MDczMjIxMTcucXpvbmUucXEuY29t" title="http:&#x2F;&#x2F;2507322117.qzone.qq.com"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -380,12 +385,17 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
     <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
   </li>
 
-        
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
   <li class="item">
     <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
   </li>
 
-  </ul>
 
 </ul>
 
@@ -422,39 +432,10 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/card/" title="分类于 card">card</a>
 </div>
 
-    <span><a href="/2023/04/26/%E6%9E%AB%E5%8F%B6%E5%AE%9B/" title="欢迎来到我的个人网站！">欢迎来到我的个人网站！</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="分类于 语言学习">语言学习</a>
-</div>
-
-    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Java%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="Java 备忘清单">Java 备忘清单</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
-</div>
-
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/DFS%E5%92%8CBFS/" title="BFS和DFS">BFS和DFS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="分类于 语言学习">语言学习</a>
-</div>
-
-    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/MATLAB%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="MATLAB 备忘清单">MATLAB 备忘清单</a></span>
+    <span><a href="/2023/05/24/about/About%20Me/" title="About me">About me</a></span>
   </li>
 
       
@@ -471,10 +452,56 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
+</div>
+
+    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%AE%8F%E5%AE%9A%E4%B9%89/" title="宏定义">宏定义</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/05/25/links/%E8%AF%B6%E5%98%BF~/" title="links">links</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/10/30/categories/%E8%AF%B6%E5%98%BF~/" title="categories">categories</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="分类于 语言学习">语言学习</a>
 </div>
 
-    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Git%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="Git 备忘清单">Git 备忘清单</a></span>
+    <span><a href="/2023/05/23/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/MATLAB%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="MATLAB 备忘清单">MATLAB 备忘清单</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/09/30/categories/index/" title="categories">categories</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/04/26/%E6%9E%AB%E5%8F%B6%E5%AE%9B/" title="欢迎来到我的个人网站！">欢迎来到我的个人网站！</a></span>
   </li>
 
       
@@ -484,7 +511,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
 </div>
 
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/P-NP%E9%97%AE%E9%A2%98/" title="P-NP 问题">P-NP 问题</a></span>
+    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E5%BF%83%E5%BE%97/" title="自增自减">自增自减</a></span>
   </li>
 
       
@@ -494,27 +521,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
 <a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
 </div>
 
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E6%8E%92%E5%BA%8F/" title="排序">排序</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
-</div>
-
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" title="进制转换">进制转换</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" title="分类于 学习小记">学习小记</a>
-</div>
-
-    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/ACM%E3%80%81OI%E3%80%81IOI%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D/" title="ACM、OI、IOI 编程竞赛模式介绍">ACM、OI、IOI 编程竞赛模式介绍</a></span>
+    <span><a href="/2023/05/23/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/%E5%8D%A1%E5%B8%B8/" title="卡常小知识">卡常小知识</a></span>
   </li>
 
   </ul>
@@ -528,7 +535,7 @@ Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title>
         <div class="status">
   <div class="copyright">
     
-    &copy; 2010 – 
+    &copy; 2015 – 
     <span itemprop="copyrightYear">2023</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
