@@ -1,0 +1,383 @@
+<!-- build time:Mon May 29 2023 19:37:30 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="永远少年！" href="http://红叶.top/rss.xml"><link rel="alternate" type="application/atom+xml" title="永远少年！" href="http://红叶.top/atom.xml"><link rel="alternate" type="application/json" title="永远少年！" href="http://红叶.top/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="学习心得"><link rel="canonical" href="http://红叶.top/2023/05/23/computer-science/notes/%E6%8E%92%E5%BA%8F/"><title>排序 - 学习小记 - 计算机科学 | Red-Leaf = 永远少年！ = 吹灭读书灯，一身都是月</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">排序</h1><div class="meta"><span class="item" title="创建时间：2023-05-23 15:49:38"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2023-05-23T15:49:38+08:00">2023-05-23</time></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Red-Leaf</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://t.mwm.moe/ycy?598737"></li><li class="item" data-background-image="https://t.mwm.moe/ycy?773106"></li><li class="item" data-background-image="https://t.mwm.moe/ycy?141416"></li><li class="item" data-background-image="https://t.mwm.moe/ycy?124460"></li><li class="item" data-background-image="https://t.mwm.moe/ycy?384902"></li><li class="item" data-background-image="https://t.mwm.moe/ycy?310666"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a><meta itemprop="position" content="1"></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/notes/" itemprop="item" rel="index" title="分类于 学习小记"><span itemprop="name">学习小记</span></a><meta itemprop="position" content="2"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://红叶.top/2023/05/23/computer-science/notes/%E6%8E%92%E5%BA%8F/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="十月秋枫"><meta itemprop="description" content="吹灭读书灯，一身都是月,  欢迎来到我的笔记空间꒰⑅•ᴗ•⑅꒱,在这里,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习交流知识,共同进步( ๑╹ ꇴ╹) ｸﾞｯ!"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="永远少年！"></span><div class="body md" itemprop="articleBody"><p>概念：</p><pre><code>所谓排序，就是把一堆杂乱的数据，排成升序或降序(递增/增减)。
+排序稳定性： 假设一组数据[1,2,9,5,5,6,8]，进行升序排序后，两个5的相应位置不发生改变，即称为稳定的排序，否则就是不稳定排序。
+
+内部排序： 数据元素全部放在内存中进行排序。
+外部排序： 即将待排序的记录存储在外存中，排序时再把数据一部分一部分地调入内存进行排序，在排序过程中需要多次进行内存和外存之间地交换。
+</code></pre><ol><li>插入排序</li></ol><p>思路：</p><pre><code>默认为第一个元素自己是有序的，从第二个元素开始。取出第二个元素tmp，往前进行比较。若该元素比tmp大，则将该元素往后移一位，直到找到比tmp小的。找到比tmp小于等于的元素后，tmp插入到该元素的下一位。循环2~4步骤。
+</code></pre><p>步骤具体实现：</p><pre><code>定义下标 i ，遍历数组。默认 i 下标已经是有序的，把i下标元素存入tmp。定义 j，j 从 i-1 的位置，开始向前遍历，遇到比 tmp大的元素，就把此时j下标的元素往后移一位，直到下标等于或小于0停止。j下标元素小于tmp，则把tmp元素插入该j下标的下一个位置。
+</code></pre><p>时间复杂度： O (N^2);</p><p>空间复杂度： O (1);</p><p>稳定性： 稳定；</p><p>具体代码实现：</p><pre><code>public static void insertSort(int[] array)&#123;
+    //1.遍历数组
+    for (int i = 0; i &lt; array.length; i++) &#123;
+        int tmp = array[i];
+        //2.往前遍历，进行插入
+        int j = i-1;
+        for ( ;j &gt;=0 ; j--) &#123;
+            if(array[j] &gt; tmp)&#123;
+                int exchange  = array[j];
+                array[j+1] = array[j];
+                array[j] = exchange;
+            &#125;else&#123;
+                //没有比tmp小的，退出循环
+                break;
+            &#125;
+        &#125;
+        //3.此时j下标元素比tmp小，tmp插入j下标的下一个位置
+        array[j+1] = tmp;
+    &#125;
+&#125;
+</code></pre><p>结论：</p><pre><code>当数据趋于有序时，排序时间越快，最好的情况下时间复杂度为O(N);当把循环中 array[j] &gt; tmp的大于号改为大于等于，此时就不是稳定的排序了。
+</code></pre><ol start="2"><li>希尔排序</li></ol><p>思路：</p><pre><code>先将待排序列进行预排序，使得待排序列接近有序，此时进行插入排序。把待排序的数据分为多个组，每组间隔为5或3…。若此组的第一个元素大于最后一个元素，将此组第一个元素和最后一个元素交换。重复上述操作，直到每组间隔只有1时，所有数据都在统一组内进行排好序。
+</code></pre><p>步骤具体实现：</p><pre><code>定义gap = 数组长度\2。把待排序列分为gap个组，每个组的第一个元素和最后一个元素进行比较交换。重复上述操作当gap为1时，进行插入排序。
+</code></pre><p>时间复杂度： O (N^1.3);</p><p>空间复杂度： O (1);</p><p>稳定性： 不稳定。</p><p>具体代码实现：</p><p>public static void shell(int[] array){<br>int gap = array.length;<br>while(gap &gt; 1){<br>gap /= 2;// 分组<br><a target="_blank" rel="noopener" href="//1.xn--tlqu7lfoe7tdg4lw7mdb6343as6r0pqu1a">//1. 每组头和尾进行比较交换</a><br>for (int i = 0; i &lt; array.length; i++) {<br>int tmp = array[i];<br><a target="_blank" rel="noopener" href="//2.xn--ldrr3a06x292c">//2. 往前遍历</a>，一次步长为 gap<br>int j = i-gap;<br>for ( ;j &gt;=0 ; j-=gap) {<br>if(array[j] &gt; tmp){<br>int exchange = array[j];<br>array[j+gap] = array[j];<br>array[j] = exchange;<br>}else{<br>break;<br>}<br>}<br>array[j+gap] = tmp;<br>}</p><pre><code>    &#125;
+&#125;
+</code></pre><p>结论：</p><pre><code>希尔排序是对插入排序的优化。当gap&gt;1时，都是预排序，目的是为了让数组更趋于有序，当gap==1时，数组已经接近有序，这样进行插入排序就会很快。希尔排序的时间复杂度不容易计算，因为gap的取值方法很多，导致很难计算，因此我们按照Knuth提出的时间复杂度O(N^1.3)来算。
+</code></pre><ol start="3"><li>选择排序</li></ol><p>思路：</p><p>每次从待排序列中选择一个最小值 (最大), 存放在序列的起始位置，直到全部待排序的数据排完。</p><p>步骤具体实现：</p><pre><code>定义i，假设待排序列i下标元素是最小值，用min记录当前i下标。定义j，从i下一个位置开始往后遍历，遇到小于array[min]时更新min，min指向每次遍历的最小值下标，直到遍历完一次数组。一次遍历完后array[i]和min下标进行交换。重复上述操作，直到待排序数据剩余1个元素。
+</code></pre><p>时间复杂度： O (N^2);</p><p>空间复杂度: O (1);</p><p>稳定性： 不稳定；</p><p>具体代码实现：</p><pre><code>public static void selectSort(int[] array)&#123;
+    for (int i = 0; i &lt; array.length; i++) &#123;
+        int min = i;
+        for (int j = i+1; j &lt; array.length; j++) &#123;
+            if(array[j] &lt; array[min])&#123;
+                //更新min的值
+                min = j;
+            &#125;
+        &#125;
+        if(min != i)&#123;
+            int tmp = array[i];
+            array[i] = array[min];
+            array[min] = tmp;
+        &#125;
+
+    &#125;
+&#125;
+</code></pre><p>结论： 效率不是很好，实际中很少使用。<br>4. 堆排序</p><p>注意：排升序需要建大根堆，排降序建小根堆。 此文章默认举例排升序。</p><p>思路 &amp; 具体步骤实现：</p><pre><code>首先得建立一个大根堆。把根节点与最后一个节点交换，每一次交换，最后一个节点向前走一步。进行堆向下调整。
+</code></pre><p>时间复杂度： O (N*logN)；</p><p>空间复杂度： O (1);</p><p>稳定性： 不稳定；</p><p>具体代码实现：</p><pre><code>public static void heapSort(int[] array)&#123;
+    //0.创建大根堆
+    createHeap(array);// 时间 O(N)
+    int end = array.length-1;
+    while (end &gt; 0)&#123;
+        //1.每次根和最后一个节点交换
+        int tmp = array[0];
+        array[0] = array[end];
+        array[end] = tmp;
+        //2.向下调整 
+        shiftDown(array,0,end);
+        //3.最后一个节点已经是有升序的了
+        end--;
+    &#125;
+&#125;
+private static void createHeap(int[] array)&#123;
+    //(array.length-1-1)-&gt;减一个1是数组下标是从0开始的，
+    //减两个1是二叉树的概念：已知孩子节点求父亲节点 -&gt;(i-1)/2
+    for (int parent = (array.length-1-1)/2; parent &gt;=0 ; parent--) &#123;
+            //向下调整
+            shiftDown(array,parent,array.length);
+    &#125;
+&#125;
+private static void shiftDown(int[] array,int parent,int len)&#123;
+    int child = (parent*2)+1;
+    while(child &lt; len)&#123;
+        if(child+1 &lt; len &amp;&amp; array[child+1] &gt; array[child])&#123;
+            child++;
+        &#125;
+        if(array[child] &gt; array[parent])&#123;
+            int tmp = array[child];
+            array[child] = array[parent];
+            array[parent] = tmp;
+            //继续向下调整
+            parent = child;
+            child = (parent*2)+1;
+        &#125;else &#123;
+            break;
+        &#125;
+    &#125;
+&#125;
+</code></pre><ol start="5"><li>冒泡排序</li></ol><p>思路： 根据序列中的两个记录键值比较结果来交换这两个记录在序列中的位置，交换排序的特点是：将键值较大的记录向序列的尾部移动，键值较小的向前部移动。</p><p>具体步骤实现：</p><pre><code>定义i遍历数组，控制趟数，总体趟数比数组长度少1；每趟让一个较大值移动到尾部。定义j每次从0下标进行两两比较交换。
+</code></pre><p>时间复杂度： O (N^2)；</p><p>空间复杂度： O (1)；</p><p>稳定性： 稳定；</p><p>具体代码实现：此处冒泡排序代码作了优化。</p><pre><code>public static void bubbleSort(int[] array)&#123;
+    for (int i = 0; i &lt; array.length-1; i++) &#123;
+        boolean  flag = false;//判断此趟排序有没有交换
+        for (int j = 0; j &lt; array.length-1-i; j++) &#123;
+            if (array[j] &gt; array[j + 1]) &#123;
+                int tmp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = tmp;
+                flag = true;
+            &#125;
+        &#125;
+        //若flag一趟下来为false 说明数组已经有序
+        if(flag == false)&#123;
+            break;
+        &#125;
+    &#125;
+&#125;
+</code></pre><p>6. 快速排序</p><p>基本思想：任取待排序元素中的某元素作为基准值，将待排序集合分割为两子序，左子序中所有元素均小于 基准值，右子序均大于 基准值，然后左右子序重复该过程，直到所有元素都排列在相应位置上。</p><p>6.1 Hoare 版</p><p>思路：</p><pre><code>取数组最左边或最右边为key。先从右边开始找到小于key值。再从左边走找到大于key值，左右进行交换。左右相遇后，相遇点为此次遍历的基准值最后与key位置交换。
+</code></pre><p>具体实现步骤：</p><pre><code>定义key，指向数组最左边的元素。定义left从数组左边开始遍历；定义right从右边开始遍历。一定要right先走，再走left。当right和left相遇后，与key交换，相遇点为基准值。遍历以该基准值分割的两子序。递归重复上述操作。
+</code></pre><p>具体代码实现：</p><pre><code>public static void quickSort(int[] array)&#123;
+    quickHelp(array,0,array.length-1);
+&#125;
+//具体实现排序调用函数
+private static void quickHelp(int[] array,int start,int end)&#123;
+    if (start &gt;= end)&#123;
+        return;
+    &#125;
+    //1.找基准值
+    int pivot = hoare(array,start,end);
+    //2.左右子序重复该操作
+    quickHelp(array,start,pivot-1);
+    quickHelp(array,pivot+1,end);
+&#125;
+private static int hoare(int[] array,int left ,int right)&#123;
+    int index = left;//记录key下标
+    int key = array[left];
+    while(left &lt; right)&#123;
+        //1.先从右 找到比key小的值
+        while(left &lt; right &amp;&amp; array[right] &gt;= key)&#123;
+            right--;
+        &#125;
+        //2.再从左找到比key大的值
+        while(left &lt; right &amp;&amp; array[left] &lt;= key)&#123;
+            left++;
+        &#125;
+        //3.交换左右值
+        int tmp = array[left];
+        array[left]  = array[right];
+        array[right] = tmp;
+    &#125;
+    //4.相遇点和key下标交换
+    int tmp = array[left];
+    array[left]  = array[index];
+    array[index] = tmp;
+    return left;
+&#125;
+</code></pre><p>代码优化：</p><p>此排序，递归下去就好像一颗二叉树，当排序的是有序时，就只有左子树或者只有右子树，此时排序的时间复杂度最高，所有：在找基准值先，尽量让左右子树划分平衡。当递归到一定层数是进行插入排序，因为越往下层遍历，这一层的递归次数越多，比如第一层递归 2 次，第二次递归 4 次…。</p><p>步骤：</p><pre><code>设定一个边界值，达到边界值时进行插入排序。保证每次划分均匀：（3个数找中数）
+如待排序：1 2 3 4 5 把1和3和5进行比较，找出中间值，把最左边值和中间值交换。
+</code></pre><p>具体代码实现：</p><pre><code>public static void quickSort(int[] array)&#123;
+    quickHelp(array,0,array.length-1);
+&#125;
+
+//具体实现排序调用函数
+private static void quickHelp(int[] array,int start,int end)&#123;
+    if (start &gt;= end)&#123;
+        return;
+    &#125;
+    //对start - end 区间进行插入排序
+    if(start &lt;= 15)&#123;
+        insertSortHelp(array,start,end);
+    &#125;
+    //在找基准前尽量保证左右划分均匀
+    int index = findMin(array,start,end);
+    swap(array,start,index);
+
+    //1.找基准值
+    int pivot = hoare(array,start,end);
+    //2.左右子序重复该操作
+    quickHelp(array,start,pivot-1);
+    quickHelp(array,pivot+1,end);
+&#125;
+public static void insertSortHelp(int[] array,int left,int right)&#123;
+    for (int i = left; i &lt;= right; i++) &#123;
+        int tmp = array[i];
+        int j = i-1;
+        for ( ;j &gt;=0 ; j--) &#123;
+            if(array[j] &gt; tmp)&#123;
+                swap(array,j,j+1);
+            &#125;else&#123;
+                break;
+            &#125;
+        &#125;
+        array[j+1] = tmp;
+    &#125;
+&#125;
+private static int findMin(int[] array,int left,int right)&#123;
+    int midIndex = (left+right)/2;
+
+    if(array[left] &lt; array[right])&#123;
+        if(array[left] &gt; array[midIndex])&#123;
+            return left;
+        &#125;else if(array[right] &lt; array[midIndex])&#123;
+            return right;
+        &#125;else &#123;
+            return midIndex;
+        &#125;
+    &#125;else&#123;//array[left] &gt; array[right]
+        if(array[left] &lt; array[midIndex])&#123;
+            return left;
+        &#125;else if(array[right] &gt; array[midIndex])&#123;
+            return right;
+        &#125;else &#123;
+            return midIndex;
+        &#125;
+    &#125;
+&#125;
+private static int hoare(int[] array,int left ,int right)&#123;
+
+    int index = left;//记录key下标
+    int key = array[left];
+    while(left &lt; right)&#123;
+        //1.先从右 找到比key小的值
+        while(left &lt; right &amp;&amp; array[right] &gt;= key)&#123;
+            right--;
+        &#125;
+        //2.再从左找到比key大的值
+        while(left &lt; right &amp;&amp; array[left] &lt;= key)&#123;
+            left++;
+        &#125;
+        //3.交换左右值
+        swap(array,left,right);
+    &#125;
+    //4.相遇点和key下标交换
+   swap(array,left,index);
+    return left;
+&#125;
+private static void swap(int[] array,int i,int j) &#123;
+    int tmp = array[i];
+    array[i] = array[j];
+    array[j] = tmp;
+&#125;
+</code></pre><p>6.2 挖坑法</p><p>思路：</p><p>大致思路根 Hoare 版本类似；</p><pre><code>选最左边的元素存入key，在此位置形成一个坑位；先从右开始遍历和key比较，再从左遍历，进行左右交换。左右相交后，把key的放入相交点位置。
+</code></pre><p>具体实现步骤：</p><pre><code>先将第一个元素存入临时变量key，形成一个坑位。定义left从数组左边开始走、right从右边开始走。先从右开始遍历找到比key小的元素，放入left的位置；然后left找到比key大的元素，放入right的位置。待left和right下标相遇后，把key的元素放入相交点。重复上述操作。
+</code></pre><p>具体代码实现【递归】：</p><pre><code>public static void digSort(int[] array,int start ,int end)&#123;
+   if(start &gt;= end)&#123;
+       return;
+   &#125;
+   int left = start;
+   int right = end;
+   int key = array[left];
+   while(left &lt; right)&#123;
+       //1.先从右开始 找到比key小的
+       while (left &lt; right &amp;&amp; array[right] &gt;= key)&#123;
+           right--;
+       &#125;
+       //2.把小值填入左边的坑位
+       array[left] = array[right];
+
+       //3.再从左开始 找到比key大的
+       while (left &lt; right &amp;&amp; array[left] &lt;= key)&#123;
+           left++;
+       &#125;
+       //4.把大值填入右边的坑位
+       array[right] = array[left];
+   &#125;
+   array[left] = key;
+   //递归
+    digSort(array,start,left-1);//遍历key左边
+    digSort(array,left+1,end);//遍历key右边
+&#125;
+</code></pre><p>6.3 前后指针法</p><p>了解即可，见得比较少，整体思路大体一样。</p><pre><code>定义key存储数组起始元素，prev指向数组开始位置；cur指prev后一个位置。当cur下标元素小于key，prev向后走，并且此时prev下标的元素不等于cur下标元素，则进行交换否则cur一直往后走，当cur走完时，prev下标和数组最左边左边下标交换。递归重复上述操作。
+</code></pre><p>动图封面</p><pre><code>public static void quick(int[] array,int start,int end)&#123;
+    if(start &gt;= end)&#123;
+        return;
+    &#125;
+    int pivot = partition(array,start,end);
+    quick(array,start,pivot-1);
+    quick(array,pivot+1,end);
+&#125;
+</code></pre><p>private static int partition(int[] array, int left, int right) {<br>int prev = left ;<br>int cur = left+1;<br>while (cur &lt;= right) {<br>if(array[cur] &lt; array[left] &amp;&amp; array[<ins>prev] != array[left]) {<br>swap(array,cur,prev);<br>}<br>cur</ins>;<br>}<br>swap(array,prev,left);<br>return prev;<br>}</p><p>6.4 快速排序非递归</p><p>思路：使用栈，模拟递归</p><pre><code>先找到基准判断基准左右是否存在两个元素及以上。把以基准为界左边的数组最左边下标和最右边下标入栈再基准右边的数组最左边下标和最右边下标入栈弹出栈顶两个下标，对此下标区间再进行找基准【弹出顺序：先右后左】重复上述操作。快速排序非递归最重要的就是找基准。
+</code></pre><p>具体代码实现：</p><pre><code>public static void quickSort2(int[] array)&#123;
+    Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+    int left = 0;
+    int right = array.length-1;
+    //找基准
+    int pivot = finMid(array,left,right);//排序核心代码
+    //1.判断基准左边有没有2个元素    1   2    3    4    5    9
+    if(pivot &gt; left+1)&#123;       //若基准：3    left:1    pivot &lt; left+1
+        //把最左边和最右边的下标入栈
+        stack.push(left);
+        stack.push(pivot-1);
+    &#125;
+    //2.判断基准右边有没有2个元素
+    if(pivot &lt; right-1)&#123;
+        //把最左边和最右边的下标入栈
+        stack.push(pivot+1);
+        stack.push(right);
+    &#125;
+    //3.弹出2个元素，重复上述操作
+    while(!stack.isEmpty())&#123;
+        //注意弹出顺序：先右和左
+        right = stack.pop();
+        left = stack.pop();
+        pivot = partition(array,left,right);
+
+        if(pivot &gt; left+1)&#123;
+            stack.push(left);
+            stack.push(pivot-1);
+        &#125;
+        if(pivot &lt; right-1)&#123;
+            stack.push(pivot+1);
+            stack.push(right);
+        &#125;
+    &#125;
+&#125;
+</code></pre><p>private static int finMid(int[] array,int left ,int right){</p><pre><code>    int index = left;//记录key下标
+    int key = array[left];
+    while(left &lt; right)&#123;
+        //1.先从右 找到比key小的值
+        while(left &lt; right &amp;&amp; array[right] &gt;= key)&#123;
+            right--;
+        &#125;
+        //2.再从左找到比key大的值
+        while(left &lt; right &amp;&amp; array[left] &lt;= key)&#123;
+            left++;
+        &#125;
+        //3.交换左右值
+        swap(array,left,right);
+    &#125;
+    //4.相遇点和key下标交换
+   swap(array,left,index);
+    return left;
+&#125;
+</code></pre><p>快速排序总结：</p><pre><code>综合性能和使用场景比较好。一般快速排序三种方法使用顺序：挖坑法-&gt;Hoare法-&gt;前后指针法
+</code></pre><ol start="7"><li>归并排序</li></ol><p>核心思想：分而治之</p><p>即：将待排序列拆分，再合并成为有序序列。</p><pre><code>先把序列逐层进行拆分：
+
+当拆分到只有一个元素时，再从下往上逐层合并，首先对第一层序列号1(元素4)，和序列号2(元素5)进行合并
+</code></pre><p>1. 创建一个大数组，长度为序列号 1 和序列号 2 长度之和，s1、s2 指针分别指向两个小序列号 (数组) 的第一个元素，ret 指向大数组的第一个元素。</p><p>2. 比较 [s1]、[s2] 指向的元素，4&lt;5，将 4 放入 ret 指向的空间，ret 往右走一步，s1 往右走一步。</p><p>3. 此时序列号 1 (数组) 已经没有元素，直接将序列号 2 的元素放入大数组中。</p><p>4.[8] 和 [1]、[7] 和 [2]、[6] 和 [3]，用同样方式进行合并。</p><p>5. 以 [4,5] 为序列 1，[1,8] 为序列 2，继续进行合并。</p><p>6.[4] 和 [1] 比较，4&gt;1，把 [1] 放入 ret 指向的空间，[s2] 往右走一步。</p><p>7. 重复上述操作，直到把 [4,5] 和 [1,8] 合并成【1,4,5,8】。</p><p>以 [2,7] 为序列 3，[3,6] 为序列 4，用同样的方式合并成为新的序列【2,3,6,7】；</p><p>8. 最后将 [1,4,5,8] 和 [2,3,6,7] 用同样的方式合并成新的序列</p><p>时间复杂度：O (N*logN) ： 归并排序算法每次将序列折半分组，共需要 logN 轮。</p><p>空间复杂度：O (N)： 归并排序算法排序过程中需要额外的一个序列去存储排序后的结果，所占空间是 N。</p><p>稳定性：稳定</p><p>具体代码实现：</p><p>public static void merge(int[] array,int start,int end){<br>if(start &gt;= end){<br>return;<br>}<br><a target="_blank" rel="noopener" href="//1.xn--kbrv57k">//1. 分解</a><br>int mid = (start+end)/2;// 折半递归<br>merge (array,start,mid);<br>merge(array,mid+1,end);<br><a target="_blank" rel="noopener" href="//2.xn--8prq6v">//2. 合并</a> 合并两个小数组为一个大数组<br>mergeHelp (array,start,mid,end);<br>}<br>private static void mergeHelp(int[] array,int left,int mid,int right){<br>// 这里直接合并 [4,5] 和 [1,8], 因为 [4] 和 [5] 两个数组太小了，不好理解<br>// 第一个小数组下标范围<br>int s1 = left;<br>int e1 = mid;<br>// 第二个小数组下标范围<br>int s2 = mid+1;<br>int e2 = right;<br>// 合并的大数组<br>int [] ret = new int [right-left+1];<br>int k = 0;//ret 下标<br>while (s1 &lt;= e1 &amp;&amp; s2 &lt;= e2){<br>// 进行比较<br>if (array [s1] &lt;= array [s2]){<br>ret[k++] = array[s1++];<br>} else{<br>ret[k++] = array[s2++];<br>}<br>}<br>// 存放剩余的有序元素<br>while (s1 &lt;= e1){<br>ret[k++] = array[s1++];<br>}<br>while(s2 &lt;= e2){<br>ret[k++] = array[s2++];<br>}<br>// 把合并完的有序元素，放入原来的数组里 -&gt; 所有归并排序空间复杂度高<br>for (int i = 0; i &lt; k; i++) {<br>//+left 因为每次合并 ret 存的元素对应的 array 下标在发生变化<br>// 若存入给 ret 的 5 6 7 8 对应原数组下标为 4 5 6 7<br>// 那 + left (4)，刚好存入原数组正确的位置<br>array [i+left] = ret [i];<br>}<br>}</p><p>非递归版本：【模拟递归】</p><pre><code>public static void mergerSort(int[] array)&#123;
+    int gap = 1;//模拟递归到每组序列只有一个元素
+    while(gap &lt; array.length)&#123;
+        //合并
+        for (int i = 0; i &lt; array.length; i+= 2*gap) &#123;
+            int left = i;
+            int mid = left+gap-1;
+            //判断越界
+            if(mid &gt;= array.length)&#123;
+                mid = array.length-1;
+            &#125;
+            int right = mid+gap;
+            //判断越界
+            if(right &gt;= array.length)&#123;
+                 right = array.length-1;
+            &#125;
+            mergeHelp(array,left,mid,right);
+        &#125;
+        gap *= 2;
+    &#125;
+&#125;
+    private static void mergeHelp(int[] array,int left,int mid,int right)&#123;
+    //第一个小数组下标范围
+    int s1 = left;
+    int e1 = mid;
+    //第二个小数组下标范围
+    int s2 = mid+1;
+    int e2 = right;
+    //合并的大数组
+    int[] ret = new int[right-left+1];
+    int k = 0;//ret下标
+    while(s1 &lt;= e1 &amp;&amp; s2 &lt;= e2)&#123;
+        //进行比较
+        if( array[s1] &lt;= array[s2])&#123;
+            ret[k++] = array[s1++];
+        &#125; else&#123;
+            ret[k++] = array[s2++];
+        &#125;
+    &#125;
+    //存放剩余的有序元素
+    while(s1 &lt;= e1)&#123;
+        ret[k++] = array[s1++];
+    &#125;
+    while(s2 &lt;= e2)&#123;
+        ret[k++] = array[s2++];
+    &#125;
+    for (int i = 0; i &lt; k; i++) &#123;
+        array[i+left] = ret[i];
+    &#125;
+&#125;
+</code></pre><p>总结：</p><pre><code>归并的缺点是需要O(N)的空间复杂度。归并排序的思想更多是在解决磁盘中的外排序问题。
+</code></pre><ol start="8"><li>排序算法复杂度及稳定性分析</li></ol><table><thead><tr><th>排序方法</th><th>最好时间复杂度</th><th>平均时间复杂度</th><th>最坏时间复杂度</th><th>空间复杂度</th><th>稳定性</th></tr></thead><tbody><tr><td>选择排序</td><td>O(n^2)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>不稳定</td></tr><tr><td>插入排序</td><td>O(n)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>稳定</td></tr><tr><td>希尔排序</td><td>O(n)</td><td>O(N^1.3)</td><td>O(n^2)</td><td>O(1)</td><td>不稳定</td></tr><tr><td>冒泡排序</td><td>O(n)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>稳定</td></tr><tr><td>快速排序</td><td>O(n * log(n))</td><td>O(n * log(n))</td><td>O(n^2)</td><td>O(logn)~O(n)</td><td>不稳定</td></tr><tr><td>堆排序</td><td>O(n * log(n))</td><td>O(n * log(n))</td><td>O(n * log(n))</td><td>O(1)</td><td>不稳定</td></tr><tr><td>归并排序</td><td>O(n * log(n))</td><td>O(n * log(n))</td><td>O(n * log(n))</td><td>O(1)</td><td>稳定</td></tr></tbody></table><div class="tags"><a href="/tags/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" rel="tag"><i class="ic i-tag"></i> 学习心得</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2023-05-27 20:09:41" itemprop="dateModified" datetime="2023-05-27T20:09:41+08:00">2023-05-27</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/wechatpay.png" alt="十月秋枫 微信支付"><p>微信支付</p></div><div><img data-src="/images/alipay.png" alt="十月秋枫 支付宝"><p>支付宝</p></div><div><img data-src="/images/friend.png" alt="十月秋枫 贝宝"><p>贝宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>十月秋枫 <i class="ic i-at"><em>@</em></i>永远少年！</li><li class="link"><strong>本文链接：</strong> <a href="http://红叶.top/2023/05/23/computer-science/notes/%E6%8E%92%E5%BA%8F/" title="排序">http://红叶.top/2023/05/23/computer-science/notes/排序/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2023/05/23/computer-science/notes/%E7%AE%97%E6%B3%95%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;t.mwm.moe&#x2F;ycy?624863" title="算法板子"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 学习小记</span><h3>算法板子</h3></a></div><div class="item right"><a href="/2023/05/23/computer-science/notes/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;t.mwm.moe&#x2F;ycy?284105" title="复杂度分析"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> 学习小记</span><h3>复杂度分析</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/2023/05/23/computer-science/notes/ACM%E3%80%81OI%E3%80%81IOI%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D/" rel="bookmark" title="编程竞赛模式介绍">编程竞赛模式介绍</a></li><li><a href="/2023/05/23/computer-science/notes/DFS%E5%92%8CBFS/" rel="bookmark" title="BFS、DFS">BFS、DFS</a></li><li><a href="/2023/05/23/computer-science/notes/P-NP%E9%97%AE%E9%A2%98/" rel="bookmark" title="P-NP">P-NP</a></li><li><a href="/2023/05/23/computer-science/notes/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="bookmark" title="动态规划">动态规划</a></li><li><a href="/2023/05/23/computer-science/notes/%E5%8D%A1%E5%B8%B8/" rel="bookmark" title="卡常小知识">卡常小知识</a></li><li><a href="/2023/05/23/computer-science/notes/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" rel="bookmark" title="复杂度分析">复杂度分析</a></li><li class="active"><a href="/2023/05/23/computer-science/notes/%E6%8E%92%E5%BA%8F/" rel="bookmark" title="排序">排序</a></li><li><a href="/2023/05/23/computer-science/notes/%E7%AE%97%E6%B3%95%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/" rel="bookmark" title="算法板子">算法板子</a></li><li><a href="/2023/05/23/computer-science/notes/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" rel="bookmark" title="进制转换">进制转换</a></li><li><a href="/2023/05/23/computer-science/notes/%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E5%BF%83%E5%BE%97/" rel="bookmark" title="自增自减">自增自减</a></li><li><a href="/2023/05/23/computer-science/notes/%E5%AE%8F%E5%AE%9A%E4%B9%89/" rel="bookmark" title="宏定义">宏定义</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="十月秋枫" data-src="/images/avatar.jpg"><p class="name" itemprop="name">十月秋枫</p><div class="description" itemprop="description">欢迎来到我的笔记空间꒰⑅•ᴗ•⑅꒱,在这里,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习交流知识,共同进步( ๑╹ ꇴ╹) ｸﾞｯ!</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">22</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">7</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">3</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tLzEwMDEwMDAxMDExMDAx" title="https:&#x2F;&#x2F;github.com&#x2F;10010001011001"><i class="ic i-github"></i></span> <span class="exturl item bilibili" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tLw==" title="https:&#x2F;&#x2F;www.bilibili.com&#x2F;"><i class="ic i-bilibili"></i></span> <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span> <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9jaS16aGFuZy1oYW8teWktemh1LXhpYW8tNDI=" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ci-zhang-hao-yi-zhu-xiao-42"><i class="ic i-zhihu"></i></span> <span class="exturl item about" data-url="aHR0cDovLzI1MDczMjIxMTcucXpvbmUucXEuY29t" title="http:&#x2F;&#x2F;2507322117.qzone.qq.com"><i class="ic i-address-card"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a></li><li class="item"><a href="/links/" rel="section"><i class="ic i-magic"></i>links</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/2023/05/23/computer-science/notes/%E7%AE%97%E6%B3%95%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2023/05/23/computer-science/notes/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/notes/" title="分类于 学习小记">学习小记</a></div><span><a href="/2023/05/23/computer-science/notes/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" title="进制转换">进制转换</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/memo-list/" title="分类于 备忘清单">备忘清单</a> <i class="ic i-angle-right"></i> <a href="/categories/memo-list/quick-reference/" title="分类于 编程速查表">编程速查表</a></div><span><a href="/2023/05/23/memo-list/quick-reference/C++%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="C++ 备忘清单">C++ 备忘清单</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/network/" title="分类于 计算机网络">计算机网络</a></div><span><a href="/2023/05/29/computer-science/network/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%B8%B8%E8%AF%86/" title="网安常识">网安常识</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/memo-list/" title="分类于 备忘清单">备忘清单</a> <i class="ic i-angle-right"></i> <a href="/categories/memo-list/quick-reference/" title="分类于 编程速查表">编程速查表</a></div><span><a href="/2023/05/23/memo-list/quick-reference/C%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="C 备忘清单">C 备忘清单</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/memo-list/" title="分类于 备忘清单">备忘清单</a> <i class="ic i-angle-right"></i> <a href="/categories/memo-list/quick-reference/" title="分类于 编程速查表">编程速查表</a></div><span><a href="/2023/05/23/memo-list/quick-reference/Java%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="Java 备忘清单">Java 备忘清单</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/memo-list/" title="分类于 备忘清单">备忘清单</a> <i class="ic i-angle-right"></i> <a href="/categories/memo-list/quick-reference/" title="分类于 编程速查表">编程速查表</a></div><span><a href="/2023/05/23/memo-list/quick-reference/Git%20%E5%A4%87%E5%BF%98%E6%B8%85%E5%8D%95/" title="Git 备忘清单">Git 备忘清单</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/04/26/%E6%9E%AB%E5%8F%B6%E5%AE%9B/" title="欢迎来到我的个人网站！">欢迎来到我的个人网站！</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/notes/" title="分类于 学习小记">学习小记</a></div><span><a href="/2023/05/23/computer-science/notes/DFS%E5%92%8CBFS/" title="BFS、DFS">BFS、DFS</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/notes/" title="分类于 学习小记">学习小记</a></div><span><a href="/2023/05/23/computer-science/notes/%E5%8D%A1%E5%B8%B8/" title="卡常小知识">卡常小知识</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/notes/" title="分类于 学习小记">学习小记</a></div><span><a href="/2023/05/23/computer-science/notes/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" title="复杂度分析">复杂度分析</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2023</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">十月秋枫 @ Red-Leaf</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"2023/05/23/computer-science/notes/排序/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script></body></html><!-- rebuild by hrmmi -->
